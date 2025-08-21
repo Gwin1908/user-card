@@ -1,0 +1,16 @@
+.user-page {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  &__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+}
