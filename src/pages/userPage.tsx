@@ -2,7 +2,7 @@
 import "./userPage.scss"
 
 //components
-import ThemeButton from "../components/themeButton/themeButton"
+import ThemeButtons from "../components/themeButtons/themeButtons"
 import UserCard from "../components/userCard/userCard"
 
 //context
@@ -29,7 +29,7 @@ const UserPage = () => {
   return (
     <section className={`user-page user-page--${theme}`}>
       <div className="user-page__wrapper">
-        <ThemeButton />
+        <ThemeButtons />
         <UserCard user={USER} />
       </div>
     </section>
