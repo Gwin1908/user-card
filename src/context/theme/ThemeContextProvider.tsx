@@ -24,13 +24,22 @@ export const ThemeContextProvider = ({
   useEffect(() => {
     // Check for saved user preference in localStorage
     const savedTheme = localStorage.getItem("theme") as Theme | null
+
+    // Check if the user has a dark scheme preference in their browser
+    const checkIsDarkSchemePreferred = () =>
+        window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches ?? false
+
     if (savedTheme) {
       setTheme(savedTheme)
     } else {
-      // If no saved preference, use initial theme
-      setTheme(initialTheme)
+      //If no saved preference, check for browser theme
+      if (checkIsDarkSchemePreferred()) {
+        setTheme("dark")
+      } else {
+        setTheme("light")
+      }
     }
-  }, [initialTheme])
+  }, [])
 
   // Apply data-theme to the html element so variables cascade everywhere
   useEffect(() => {
@@ -39,8 +48,9 @@ export const ThemeContextProvider = ({
   }, [theme])
 
   const toggleTheme = useCallback(() => {
+    localStorage.setItem("theme", theme === "light" ? "dark" : "light")
     setTheme((prev) => (prev === "light" ? "dark" : "light"))
-  }, [])
+  }, [theme])
 
   const value = useMemo<ThemeContextValue>(
     () => ({ theme, setTheme, toggleTheme }),

@@ -5,10 +5,10 @@ import "./themeButtons.scss"
 import useTheme from "../../context/theme/useTheme"
 
 const ThemeButtons = () => {
-  const { theme, setTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme()
 
-  const handleToggle = (next: "light" | "dark") => {
-    setTheme(next)
+  const handleToggle = () => {
+    toggleTheme()
   }
 
   return (
@@ -17,7 +17,7 @@ const ThemeButtons = () => {
         className={`theme-toggle__bttn left ${
           theme === "light" ? "is-active" : ""
         }`}
-        onClick={() => handleToggle("light")}
+        onClick={() => handleToggle()}
         aria-selected={theme === "light"}
       >
         Light
@@ -26,7 +26,7 @@ const ThemeButtons = () => {
         className={`theme-toggle__bttn right ${
           theme === "dark" ? "is-active" : ""
         }`}
-        onClick={() => handleToggle("dark")}
+        onClick={() => handleToggle()}
         aria-selected={theme === "dark"}
       >
         Dark
