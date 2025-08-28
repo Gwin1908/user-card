@@ -28,10 +28,6 @@
   }
 }
 
-.theme-toggle__bttn:is(:hover, :focus-visible) {
-  outline: none;
-}
-
 .theme-toggle__bttn.is-active {
   background: var(--color-toggle-active-bg);
   color: var(--color-toggle-active-text);
