@@ -27,7 +27,7 @@ export const ThemeContextProvider = ({
 
     // Check if the user has a dark scheme preference in their browser
     const checkIsDarkSchemePreferred = () =>
-        window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches ?? false
+      window?.matchMedia?.("(prefers-color-scheme:dark)")?.matches ?? false
 
     if (savedTheme) {
       setTheme(savedTheme)
@@ -36,10 +36,10 @@ export const ThemeContextProvider = ({
       if (checkIsDarkSchemePreferred()) {
         setTheme("dark")
       } else {
-        setTheme("light")
+        setTheme(initialTheme)
       }
     }
-  }, [])
+  }, [initialTheme])
 
   // Apply data-theme to the html element so variables cascade everywhere
   useEffect(() => {
